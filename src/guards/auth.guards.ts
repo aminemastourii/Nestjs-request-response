@@ -10,7 +10,7 @@ export class AuthGuard  implements CanActivate {
         const request = context.switchToHttp().getRequest(); // Get the HTTP request object
 
         this.logger.log(AuthGuard.name);
-        return true; 
+        return true;
     }
  
 }
