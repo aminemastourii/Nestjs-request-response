@@ -4,8 +4,9 @@ import { AppService } from './app.service';
 import { RequestService } from './request.service';
 import { AuthenticationMiddleware } from './middleware/authentication.middleware';
 import { AuthGuard } from './guards/auth.guards';
-import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
+import { APP_GUARD, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 import { LoggingInterceptor } from './interceptors/logging.interceptors';
+import { FreezePipe } from './pipes/freeze.pipe';
 
 @Module({
   imports: [],
@@ -20,6 +21,10 @@ import { LoggingInterceptor } from './interceptors/logging.interceptors';
                           // which is a request scoped
     useClass: LoggingInterceptor,
 },
+{
+  provide: APP_PIPE, // privde our  freeze filter globally 
+  useClass: FreezePipe,
+}
 ],
   
 })
