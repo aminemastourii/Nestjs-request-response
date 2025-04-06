@@ -19,11 +19,11 @@ export class AppController {
     return this.appService.getUserID();
   }
 
-  // @Post()
-  // @UseGuards(FreezePipe)
-  // postexemple(@Body() body: any) {
-  //   body.test = "heeey , this is a test";
-  // }
+  @Post()
+  @UseGuards(FreezePipe)
+  postexemple(@Body() body: any) {
+    body.test = "heeey , this is a test";
+  }
 
   @Get('httperror')
   @UseFilters(HttpExceptionFilter)
